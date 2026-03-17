@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Day One — The Trusted Data Insights and AI Integrators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1B3A6D;
+      --navy-deep: #0F2347;
+      --orange: #F7931E;
+      --orange-glow: #F7931E33;
+      --teal: #2EC4B6;
+      --teal-glow: #2EC4B622;
+      --white: #FFFFFF;
+      --off-white: #F4F6FA;
+      --gray-100: #E8ECF2;
+      --gray-400: #8A94A6;
+      --gray-700: #3D4A5C;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy-deep);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── Ambient background ─── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 20% 10%, var(--teal-glow) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, var(--orange-glow) 0%, transparent 60%),
+        linear-gradient(180deg, var(--navy-deep) 0%, #0D1B35 100%);
+      background-size: cover;
+    }
+
+    .bg-grid::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ─── Layout ─── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── Header / Nav ─── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .logo .start-day { color: var(--white); }
+    .logo .one { color: var(--orange); }
+
+
+    .nav-link {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-400);
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-link:hover { color: var(--orange); }
+
+    /* ─── Hero ─── */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid var(--teal);
+      border-radius: 100px;
+      padding: 6px 20px;
+      margin-bottom: 28px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      animation: fadeUp .8s .15s ease both;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--orange), #FFB347);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--gray-400);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Video Section ─── */
+    .video-section {
+      padding: 20px 0 60px;
+      animation: fadeUp .8s .45s ease both;
+    }
+
+    .video-heading {
+      text-align: center;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--teal), var(--white));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .callout-box {
+      position: relative;
+      background: linear-gradient(135deg, rgba(27,58,109,.5), rgba(15,35,71,.6));
+      border: 1px solid rgba(46,196,182,.2);
+      border-left: 3px solid var(--teal);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      font-size: .95rem;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 1.8;
+      backdrop-filter: blur(8px);
+    }
+
+    .callout-box .callout-cta {
+      display: block;
+      margin-top: 16px;
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .video-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04),
+        0 24px 80px -12px rgba(0,0,0,.6),
+        0 0 120px -40px var(--orange-glow);
+    }
+
+    .video-container::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      padding: 1px;
+      background: linear-gradient(160deg, rgba(247,147,30,.3), transparent 40%, rgba(46,196,182,.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .video-container video {
+      display: block;
+      width: 100%;
+      min-height: 480px;
+      height: auto;
+      border-radius: 16px;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* ─── Fallback message when no video file ─── */
+    .video-placeholder {
+      display: none; /* hidden when video loads */
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--gray-400);
+      font-size: .95rem;
+    }
+
+    .video-placeholder .play-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-placeholder .play-icon svg {
+      fill: var(--white);
+      width: 24px;
+      height: 24px;
+      margin-left: 3px;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      text-align: center;
+      padding: 32px 0 48px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .footer-logo {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .footer-logo .start-day { color: var(--white); }
+    .footer-logo .one { color: var(--orange); }
+
+    .footer-tagline {
+      font-size: .8rem;
+      color: var(--gray-400);
+      font-weight: 300;
+      letter-spacing: .5px;
+    }
+
+    .footer-cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 32px;
+      background: var(--orange);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .9rem;
+      text-decoration: none;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .footer-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--orange-glow);
+    }
+
+    .contact-info {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-name {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--white);
+      letter-spacing: .5px;
+    }
+
+    .contact-detail {
+      font-size: .85rem;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+
+    .contact-detail a {
+      color: var(--teal);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .contact-detail a:hover { color: var(--orange); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 12px; }
+      .hero { padding: 40px 0 24px; }
+      .video-section { padding: 12px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <span class="start-day">Start Day</span>
+        <span class="one">One</span>
+      </div>
+      <a href="https://www.startdayone.com" class="nav-link" target="_blank">startdayone.com &rarr;</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-tag">The Trusted Data Insights and AI Integrators</div>
+      <h1>Real-Time Insights for<br>the <span class="highlight">Office of the CFO</span></h1>
+      <p>We help mid-market finance teams move from manual Excel reporting to automated, real-time analytics — starting Day One.</p>
+    </section>
+
+    <!-- Video -->
+    <section class="video-section">
+      <h2 class="video-heading">CFO Ai Sidekick</h2>
+      <div class="callout-box">
+        This is a hosted Ai agent that integrates with accounting platforms like QuickBooks (and any others with an API) to work as an accounting analyst to prepare the CFO or business owner for understanding clean financial reports that have been automatically reviewed for account miscoding, missing accruals, streamlining bank reconciliation mismatches, new payees for potential fraud detection (or just understand where new spending is happening), to an overall anomaly review.
+        <span class="callout-cta">But better yet, just watch the walkthrough here &darr;</span>
+      </div>
+      <div class="video-container">
+        <!--
+          ╔══════════════════════════════════════════════════════╗
+          ║  INSTRUCTIONS: Replace the video source below.      ║
+          ║                                                     ║
+          ║  1. Place your video file (e.g. demo.mp4) in the    ║
+          ║     same folder as this index.html file.            ║
+          ║                                                     ║
+          ║  2. Update the <source src="..."> tag to match      ║
+          ║     your filename.                                  ║
+          ║                                                     ║
+          ║  Supported formats: .mp4 (best), .webm, .ogg       ║
+          ╚══════════════════════════════════════════════════════╝
+        -->
+        <video controls playsinline preload="metadata" poster="">
+          <source src="video.mp4" type="video/mp4">
+          <!-- Add additional formats for broader support -->
+          <!-- <source src="video.webm" type="video/webm"> -->
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-logo">
+        <span class="start-day">Start Day</span> <span class="one">One</span>
+      </div>
+      <div class="footer-tagline">Data analytics and agentic AI workflows — Start Day One.</div>
+      <a href="https://startdayone.com/book-discovery-call" class="footer-cta" target="_blank">Jump on a Discovery Call</a>
+      <div class="contact-info">
+        <div class="contact-name">Chris Jarski, CPA, MBA</div>
+        <div class="contact-detail">Email | <a href="mailto:chris@startdayone.com">chris@startdayone.com</a></div>
+        <div class="contact-detail">Cell | <a href="tel:+14043073513">(404) 307-3513</a></div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
